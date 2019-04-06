@@ -124,6 +124,9 @@ function initGame(){
 	shuffle();
 }
 
+var getInitialTime = document .getElementById("timer");
+getInitialTime.innerHTML = 'Time: ' + hours + '0:' + minutes + '0:' + seconds + '0';
+
 //FIXME: Está mexendo com o layout e não deveria fazer isso
 document.getElementById("buttonRestart").addEventListener("click", function(){
 	console.log('I was clicked  ------- RESTART GAME');
@@ -142,10 +145,9 @@ document.getElementById("buttonRestart").addEventListener("click", function(){
 });
 
 document.getElementById("buttonStart").addEventListener("click", function(){
-	buttonStart = true;
 	initGame();
 	resetBoard();
-	resetStopWatch();	
+	resetStopWatch();
 });
 
 //FIXME: melhorar layout da Div ou exibir uma modal 
