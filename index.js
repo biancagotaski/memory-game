@@ -167,13 +167,12 @@ document.getElementById("buttonStart").addEventListener("click", function(){
 });
 
 //FIXME: melhorar layout da Div ou exibir uma modal 
-//clearTimeout(clearTime); ->> inserir tempo total do jogo na modal
-//TÁ DANDO XABU
 document.getElementById("checkWinGame").addEventListener('click', function(){
 	if(countWinGame == numWinGame){
 		if(!waitFinishShowUp){
 			setTimeout(() => {
 				//essa linha abaixo não está funcionando
+				//This gonna be replaced by an modal screen
 				showStatusGame.textContent = "Parabéns, você ganhou o jogo!!!";
 				clearTimeout(clearTime);
 				totalTimeGame = mins.toString() + secs.toString();
