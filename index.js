@@ -59,13 +59,11 @@ function disableCards(){
 
 function unflipCards(){
 	waitFinishShowUp = true;
-
 	setTimeout(() => {
-			firstCard.classList.remove('flip');
-			secondCard.classList.remove('flip');
-			
-			resetBoard();
-		}, 1500);
+		firstCard.classList.remove('flip');
+		secondCard.classList.remove('flip');
+		resetBoard();
+	}, 1500);
 }
 
 //VERIFICAR SE ISSO SERÁ ULTIL NO FIXME DE UNFLIP CARD NO MOMENTO EM QUE VIRO APENAS DUAS OU 4 CARTAS PARA REINICIAR O JOGO
@@ -154,11 +152,15 @@ document.getElementById("buttonStart").addEventListener("click", function(){
 //clearTimeout(clearTime); ->> inserir tempo total do jogo na modal
 //TÁ DANDO XABU
 document.getElementById("checkWinGame").addEventListener('click', function(){
-	// if(countWinGame == numWinGame){
-	// 	if(waitFinishShowUp == true){
-	// 		//showStatusGame.textContent = "Parabéns, você ganhou o jogo!!!";
-	// 		clearTimeout(clearTime);
-	// 		alert("Parabéns, você ganhou o jogo!!!");
-	// 	}
-	// }
+	if(countWinGame == numWinGame){
+		if(!waitFinishShowUp){
+			setTimeout(() => {
+				//essa linha abaixo não está funcionando
+				showStatusGame.textContent = "Parabéns, você ganhou o jogo!!!";
+				clearTimeout(clearTime);
+				alert("Parabéns, você ganhou o jogo!!!");
+				countWinGame = 0;
+			}, 150);
+		}
+	}
 });
