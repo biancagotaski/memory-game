@@ -23,6 +23,8 @@ var secs, mins, gethours;
 var timer = document .getElementById("timer");
 timer.innerHTML = 'Time: ' + hours + '0:' + minutes + '0:' + seconds + '0';
 
+let totalTimeGame;
+
 function flipCard(){
 	if(buttonStart == true){
 		if (waitFinishShowUp) return;
@@ -108,7 +110,7 @@ function startWatch() {
 	// var x = document .getElementById("timer");
 	timer.innerHTML = 'Time: ' + gethours + mins + secs;
 	seconds++;
-	clearTime = setTimeout("startWatch()", 1000); 
+	clearTime = setTimeout("startWatch()", 1000);
 }
 
 function resetStopWatch(){
@@ -123,6 +125,22 @@ function initGame(){
 	}
 	shuffle();
 }
+
+//This function bellow it's just for a better display of the total time
+// function displayTotalTime(){
+// 	if(seconds <= 60 && minutes < 0 && hours < 0){
+// 		totalTimeGame = mins.toString() + secs.toString() + ' segundos';
+// 		return totalTimeGame;
+// 	}
+// 	if(minutes <= 60 && seconds > 60 && hours < 0){
+// 		totalTimeGame = mins.toString() + secs.toString() + ' minutos';
+// 		return totalTimeGame;
+// 	}
+// 	if(hours <= 0 && minutes > 60 && seconds > 60){
+// 		totalTimeGame = mins.toString() + secs.toString() + ' horas';
+// 	}
+// 	// totalTimeGame = mins.toString() + secs.toString();
+// }
 
 //FIXME: Está mexendo com o layout e não deveria fazer isso
 document.getElementById("buttonRestart").addEventListener("click", function(){
@@ -158,7 +176,8 @@ document.getElementById("checkWinGame").addEventListener('click', function(){
 				//essa linha abaixo não está funcionando
 				showStatusGame.textContent = "Parabéns, você ganhou o jogo!!!";
 				clearTimeout(clearTime);
-				alert("Parabéns, você ganhou o jogo!!!");
+				totalTimeGame = mins.toString() + secs.toString();
+				alert(`Parabéns, você ganhou o jogo!!!\nO tempo total do jogo foi: ${totalTimeGame}`);
 				countWinGame = 0;
 			}, 150);
 		}
