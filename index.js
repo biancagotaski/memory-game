@@ -20,6 +20,8 @@ var seconds = 0, minutes = 0, hours = 0;
 var clearState; 
 var secs, mins, gethours;
 
+var timer = document .getElementById("timer");
+timer.innerHTML = 'Time: ' + hours + '0:' + minutes + '0:' + seconds + '0';
 
 function flipCard(){
 	if(buttonStart == true){
@@ -105,8 +107,8 @@ function startWatch() {
 	}
 	gethours = (hours < 10) ? ('0' + hours + ': ') : (hours + ': ');
 	secs = (seconds < 10) ? ('0' + seconds) : (seconds);
-	var x = document .getElementById("timer");
-	x.innerHTML = 'Time: ' + gethours + mins + secs;
+	// var x = document .getElementById("timer");
+	timer.innerHTML = 'Time: ' + gethours + mins + secs;
 	seconds++;
 	clearTime = setTimeout("startWatch()", 1000); 
 }
@@ -123,9 +125,6 @@ function initGame(){
 	}
 	shuffle();
 }
-
-var getInitialTime = document .getElementById("timer");
-getInitialTime.innerHTML = 'Time: ' + hours + '0:' + minutes + '0:' + seconds + '0';
 
 //FIXME: Está mexendo com o layout e não deveria fazer isso
 document.getElementById("buttonRestart").addEventListener("click", function(){
@@ -145,6 +144,7 @@ document.getElementById("buttonRestart").addEventListener("click", function(){
 });
 
 document.getElementById("buttonStart").addEventListener("click", function(){
+	buttonStart = true;
 	initGame();
 	resetBoard();
 	resetStopWatch();
