@@ -157,6 +157,7 @@ document.getElementById("buttonRestart").addEventListener("click", function(){
 	cards.forEach(card => card.addEventListener('click', flipCard));
 	resetBoard();
 	resetStopWatch();
+	countWinGame = 0;
 });
 
 document.getElementById("buttonStart").addEventListener("click", function(){
@@ -164,6 +165,7 @@ document.getElementById("buttonStart").addEventListener("click", function(){
 	initGame();
 	resetBoard();
 	resetStopWatch();
+	countWinGame = 0;
 });
 
 //FIXME: melhorar layout da Div ou exibir uma modal 
