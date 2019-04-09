@@ -134,17 +134,26 @@ function resetStopWatch(){
 }
 
 function initGame(){
-	for(var i=0; i<cards.length; i++){
-		cards[i].addEventListener('click', flipCard);
+	if(countWinGame < numWinGame){
+		unflipAllCards();
+		resetBoard();
+		resetStopWatch();
+		countWinGame = 0;
+		activateAllCards();
+		setTimeout(() => {
+			shuffle();
+		}, 1000);
+	} else {
+		unflipAllCardsAfterWinGame();
+		resetBoard();
+		resetStopWatch();
+		shuffle();
+		countWinGame = 0;
 	}
-	shuffle();
-	unflipAllCardsAfterWinGame();
-	resetBoard();
-	resetStopWatch();
 }
 
 function restartGame(){
-	if(countWinGame < 6){
+	if(countWinGame < numWinGame){
 		unflipAllCards();
 		resetBoard();
 		resetStopWatch();
@@ -200,9 +209,6 @@ document.getElementById("buttonRestart").addEventListener("click", function(){
 document.getElementById("buttonStart").addEventListener("click", function(){
 	buttonStart = true;
 	initGame();
-	resetBoard();
-	resetStopWatch();
-	countWinGame = 0;
 });
 
 //FIXME: melhorar layout da Div ou exibir uma modal 
