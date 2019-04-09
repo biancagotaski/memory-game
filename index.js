@@ -68,6 +68,15 @@ function unflipCards(){
 	}, 1500);
 }
 
+function unflipAllCardsAfterWinGame(){
+	cards.forEach(card => {
+		let randomPos = Math.floor(Math.random() * 12);
+		card.classList.remove('flip');
+		card.style.order = randomPos;
+	});	
+	cards.forEach(card => card.addEventListener('click', flipCard));
+}
+
 //VERIFICAR SE ISSO SERÁ ULTIL NO FIXME DE UNFLIP CARD NO MOMENTO EM QUE VIRO APENAS DUAS OU 4 CARTAS PARA REINICIAR O JOGO
 // function unflipAllCards(){
 // 	setTimeout(() => {
@@ -124,6 +133,9 @@ function initGame(){
 		cards[i].addEventListener('click', flipCard);
 	}
 	shuffle();
+	unflipAllCardsAfterWinGame();
+	resetBoard();
+	resetStopWatch();
 }
 
 //This function bellow it's just for a better display of the total time
@@ -149,12 +161,7 @@ document.getElementById("buttonRestart").addEventListener("click", function(){
 	// 	cards[i].classList.remove('flip');
 	// }
 	// shuffle();
-	cards.forEach(card => {
-		let randomPos = Math.floor(Math.random() * 12);
-		card.classList.remove('flip');
-		card.style.order = randomPos;
-	});	
-	cards.forEach(card => card.addEventListener('click', flipCard));
+	unflipAllCardsAfterWinGame();
 	resetBoard();
 	resetStopWatch();
 });
@@ -162,8 +169,6 @@ document.getElementById("buttonRestart").addEventListener("click", function(){
 document.getElementById("buttonStart").addEventListener("click", function(){
 	buttonStart = true;
 	initGame();
-	resetBoard();
-	resetStopWatch();
 });
 
 //FIXME: melhorar layout da Div ou exibir uma modal 
