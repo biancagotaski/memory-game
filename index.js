@@ -90,6 +90,7 @@ function unflipAllCardsAfterWinGame(){
 function resetBoard(){
 	[hasFlippedCard, waitFinishShowUp] = [false, false];
 	[firstCard, secondCard] = [null, null];
+	countWinGame = 0;
 }
 
 function shuffle(){
@@ -164,7 +165,6 @@ document.getElementById("buttonRestart").addEventListener("click", function(){
 	unflipAllCardsAfterWinGame();
 	resetBoard();
 	resetStopWatch();
-	countWinGame = 0;
 });
 
 document.getElementById("buttonStart").addEventListener("click", function(){
@@ -172,7 +172,6 @@ document.getElementById("buttonStart").addEventListener("click", function(){
 	initGame();
 	resetBoard();
 	resetStopWatch();
-	countWinGame = 0;
 });
 
 //FIXME: melhorar layout da Div ou exibir uma modal 
