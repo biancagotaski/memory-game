@@ -79,7 +79,6 @@ function unflipAllCardsAfterWinGame(){
 	activateAllCards();
 }
 
-//VERIFICAR SE ISSO SERÁ ULTIL NO FIXME DE UNFLIP CARD NO MOMENTO EM QUE VIRO APENAS DUAS OU 4 CARTAS PARA REINICIAR O JOGO
 function unflipAllCards(){
 	setTimeout(() => {
 		for(var i=0; i<cards.length; i++){
@@ -194,7 +193,6 @@ function checkWinGame(){
 // 	// totalTimeGame = mins.toString() + secs.toString();
 // }
 
-//FIXME: Está mexendo com o layout e não deveria fazer isso
 document.getElementById("buttonRestart").addEventListener("click", function(){
 	restartGame();
 });
