@@ -24,6 +24,7 @@ var timer = document .getElementById("timer");
 timer.innerHTML = 'Time: ' + hours + '0:' + minutes + '0:' + seconds + '0';
 
 let totalTimeGame;
+var waitUnflipAllCards;
 
 function flipCard(){
 	if(buttonStart == true){
@@ -59,6 +60,7 @@ function disableCards(){
 	resetBoard();
 }
 
+//this function only unflip the cards that aren't have a match
 function unflipCards(){
 	waitFinishShowUp = true;
 	setTimeout(() => {
@@ -74,18 +76,17 @@ function unflipAllCardsAfterWinGame(){
 		card.classList.remove('flip');
 		card.style.order = randomPos;
 	});	
-	cards.forEach(card => card.addEventListener('click', flipCard));
+	activateAllCards();
 }
 
-//VERIFICAR SE ISSO SERÁ ULTIL NO FIXME DE UNFLIP CARD NO MOMENTO EM QUE VIRO APENAS DUAS OU 4 CARTAS PARA REINICIAR O JOGO
-// function unflipAllCards(){
-// 	setTimeout(() => {
-// 		for(var i=0; i<cards.length; i++){
-// 			cards[i].classList.remove('flip');
-// 		}
-// 		resetBoard();
-// 	}, 1500);
-// }
+function unflipAllCards(){
+	setTimeout(() => {
+		for(var i=0; i<cards.length; i++){
+			cards[i].classList.remove('flip');
+		}
+		resetBoard();
+	}, 100);
+}
 
 function resetBoard(){
 	[hasFlippedCard, waitFinishShowUp] = [false, false];
@@ -104,6 +105,10 @@ function disableAllCards(){
 		cards[i].removeEventListener('click', flipCard);
 	}
 	resetBoard();
+}
+
+function activateAllCards(){
+	cards.forEach(card => card.addEventListener('click', flipCard));
 }
 
 function startWatch() {
@@ -138,6 +143,25 @@ function initGame(){
 	resetStopWatch();
 }
 
+function restartGame(){
+	if(countWinGame < 6){
+		unflipAllCards();
+		resetBoard();
+		resetStopWatch();
+		countWinGame = 0;
+		activateAllCards();
+		setTimeout(() => {
+			shuffle();
+		}, 1000);
+	} else {
+		unflipAllCardsAfterWinGame();
+		resetBoard();
+		shuffle();
+		resetStopWatch();
+		countWinGame = 0;
+	}
+}
+
 function checkWinGame(){
 	if(countWinGame == numWinGame){
 		if(!waitFinishShowUp){
@@ -169,17 +193,8 @@ function checkWinGame(){
 // 	// totalTimeGame = mins.toString() + secs.toString();
 // }
 
-//FIXME: Está mexendo com o layout e não deveria fazer isso
 document.getElementById("buttonRestart").addEventListener("click", function(){
-	console.log('I was clicked  ------- RESTART GAME');
-	// for(var i=0; i<cards.length; i++){
-	// 	cards[i].classList.remove('flip');
-	// }
-	// shuffle();
-	unflipAllCardsAfterWinGame();
-	resetBoard();
-	resetStopWatch();
-	countWinGame = 0;
+	restartGame();
 });
 
 document.getElementById("buttonStart").addEventListener("click", function(){
