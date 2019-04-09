@@ -90,7 +90,6 @@ function unflipAllCardsAfterWinGame(){
 function resetBoard(){
 	[hasFlippedCard, waitFinishShowUp] = [false, false];
 	[firstCard, secondCard] = [null, null];
-	countWinGame = 0;
 }
 
 function shuffle(){
@@ -139,6 +138,21 @@ function initGame(){
 	resetStopWatch();
 }
 
+function checkWinGame(){
+	if(countWinGame == numWinGame){
+		if(!waitFinishShowUp){
+			setTimeout(() => {
+				//This gonna be replaced by an modal screen
+				showStatusGame.textContent = "Parabéns, você ganhou o jogo!!!";
+				clearTimeout(clearTime);
+				totalTimeGame = mins.toString() + secs.toString();
+				alert(`Parabéns, você ganhou o jogo!!!\nO tempo total do jogo foi: ${totalTimeGame}`);
+				countWinGame = 0;
+			}, 150);
+		}
+	}
+}
+
 //This function bellow it's just for a better display of the total time
 // function displayTotalTime(){
 // 	if(seconds <= 60 && minutes < 0 && hours < 0){
@@ -165,6 +179,7 @@ document.getElementById("buttonRestart").addEventListener("click", function(){
 	unflipAllCardsAfterWinGame();
 	resetBoard();
 	resetStopWatch();
+	countWinGame = 0;
 });
 
 document.getElementById("buttonStart").addEventListener("click", function(){
@@ -172,21 +187,10 @@ document.getElementById("buttonStart").addEventListener("click", function(){
 	initGame();
 	resetBoard();
 	resetStopWatch();
+	countWinGame = 0;
 });
 
 //FIXME: melhorar layout da Div ou exibir uma modal 
 document.getElementById("checkWinGame").addEventListener('click', function(){
-	if(countWinGame == numWinGame){
-		if(!waitFinishShowUp){
-			setTimeout(() => {
-				//essa linha abaixo não está funcionando
-				//This gonna be replaced by an modal screen
-				showStatusGame.textContent = "Parabéns, você ganhou o jogo!!!";
-				clearTimeout(clearTime);
-				totalTimeGame = mins.toString() + secs.toString();
-				alert(`Parabéns, você ganhou o jogo!!!\nO tempo total do jogo foi: ${totalTimeGame}`);
-				countWinGame = 0;
-			}, 150);
-		}
-	}
+	checkWinGame();
 });
