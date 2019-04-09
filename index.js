@@ -164,11 +164,15 @@ document.getElementById("buttonRestart").addEventListener("click", function(){
 	unflipAllCardsAfterWinGame();
 	resetBoard();
 	resetStopWatch();
+	countWinGame = 0;
 });
 
 document.getElementById("buttonStart").addEventListener("click", function(){
 	buttonStart = true;
 	initGame();
+	resetBoard();
+	resetStopWatch();
+	countWinGame = 0;
 });
 
 //FIXME: melhorar layout da Div ou exibir uma modal 
