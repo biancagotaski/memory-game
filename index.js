@@ -176,10 +176,10 @@ function checkWinGame(){
 		if(!waitFinishShowUp){
 			setTimeout(() => {
 				//This gonna be replaced by an modal screen
-				showStatusGame.textContent = "Parabéns, você ganhou o jogo!!!";
+				showStatusGame.textContent = "Congratulations! you won the game!";
 				clearTimeout(clearTime);
 				totalTimeGame = mins.toString() + secs.toString();
-				alert(`Parabéns, você ganhou o jogo!!!\nO tempo total do jogo foi: ${totalTimeGame}`);
+				alert(`Congratulations! you won! \n The total time for the result was: ${totalTimeGame}`);
 				countWinGame = 0;
 			}, 150);
 		}
