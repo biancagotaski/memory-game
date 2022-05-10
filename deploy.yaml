@@ -17,6 +17,7 @@ jobs:
           token: ${{ secrets.CTOAI_BGOTASKI_TOKEN }}
           event_name: "deployment"
           event_action: "succeeded"
+          repo: 'memory-game'
       - name: 'Report Deployment Failed'
         if: ${{ failure() }}
         uses: cto-ai/action@v1.2
