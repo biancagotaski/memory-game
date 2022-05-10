@@ -13,8 +13,8 @@ jobs:
         uses: cto-ai/action@v1.2
         id: ctoai-action
         with:
-          team_id: ${{ secrets.CTOAI_BGOTASKI_ID_TOKEN }}
-          token: ${{ secrets.CTOAI_BGOTASKI_TOKEN }}
+          team_id: ${{ secrets.TEAM_ID}}
+          token: ${{ secrets.MEMORY_GAME_TOKEN }}
           event_name: "deployment"
           event_action: "succeeded"
           repo: 'memory-game'
@@ -23,7 +23,7 @@ jobs:
         uses: cto-ai/action@v1.2
         id: ctoai-action
         with:
-          team_id: ${{ secrets.CTOAI_BGOTASKI_ID_TOKEN }}
-          token: ${{ secrets.CTOAI_BGOTASKI_TOKEN }}
+          team_id: ${{ secrets.TEAM_ID }}
+          token: ${{ secrets.MEMORY_GAME_TOKEN }}
           event_name: "deployment"
           event_action: "failed"
