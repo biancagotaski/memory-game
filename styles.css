@@ -16,10 +16,9 @@ body {
 }
 
 #gameControl {
-  display: grid;
-  margin-bottom: 0.5%;
-  margin-left: 27.5%;
   margin-top: 2%;
+  margin-bottom: 1%;
+  text-align: center;
 }
 
 .memory-game {
@@ -80,7 +79,6 @@ body {
 
 .restartGame {
   float: left;
-  margin-right: 29%;
   display: inline-flex;
 }
 
@@ -90,5 +88,20 @@ body {
 
 #timer{
   background: #1C7CCC;
-  margin-left: 6.5%;
+  margin-left: 10%;
+  float:right;
+}
+
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class="gameControl"] {
+    width: 100%;
+  }
+  [class="controlerGame"] {
+    width: 100%;
+  }
+  [class="cardsControl"] {
+    width: 100%;
+  }
 }
