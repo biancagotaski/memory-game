@@ -5,6 +5,23 @@
 	<title>Memory Game</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
 <body>
+	<div id="gameControl">
+		<section class="controlerGame">
+			<div class="startGame">
+				<button id="buttonStart">Start Game</button>
+			</div>
+			<div class="restartGame">
+				<button id="buttonRestart">Restart Game</button>
+			</div>
+			<div id="timer">
+				<span class="minutes"></span>
+				<span class="seconds"></span>
+			</div>
+		</section>
+		<div id="winOrLoseMessage">
+		</div>
+	</div>
+
 	<div id="cardsControl">
 		<section class="memory-game" id="checkWinGame">
 			<div class="memory-card" data-framework="react">
@@ -64,22 +81,6 @@
 		</section>
 	</div>
 
-	<div id="gameControl">
-		<section class="controlerGame">
-			<div class="startGame">
-				<button id="buttonStart">Start Game</button>
-			</div>
-			<div class="restartGame">
-				<button id="buttonRestart">Restart Game</button>
-			</div>
-			<div id="timer">
-				<span class="minutes"></span>
-				<span class="seconds"></span>
-			</div>
-		</section>
-		<div id="winOrLoseMessage">
-		</div>
-	</div>
 	<script type="text/javascript" src="index.js"></script>
 </body>
 </head>	

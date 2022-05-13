@@ -5,24 +5,25 @@
 }
 
 body {
-  display: block;
   background: #060AB2;
 }
 
 #cardsControl {
-  position: absolute;
   z-index: 5;
-  left: 25%; top: 1%;
+  left: 50%;
+  right: 50%;
+  float: center;
 }
 
 #gameControl {
-  float: right;
-  margin-right: 15%;
-  margin-top: 1%;
+  display: grid;
+  margin-bottom: 0.5%;
+  margin-left: 27.5%;
+  margin-top: 2%;
 }
 
 .memory-game {
-  width: 640px;
+  width: 640px; 
   height: 640px;
   margin: auto;
   margin-bottom: 2%;
@@ -68,39 +69,19 @@ body {
 
 /* SECTION DOS CONTROLERS DO GAME */
 .controlerGame {
-  height: 640px;
-  float: right;
-  margin: auto;
-  display: block;
-  perspective: 1000px;
+  display: -webkit-inline-box;
 }
 
 .startGame{
-  display: flex;
-  justify-content: center;
-  margin: 2% 0px 2%x 0px;
-  width: 100%;
+  float: left;
+  margin-right: 1%;
+  display: inline-flex;
 }
 
 .restartGame {
-  margin: 2% 0px 2%x 0px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-#buttonStart {
-  display: inline-block;
-  margin: 2% 0px 2% 0px;
-  padding: 2%;
-  width: 100%;
-}
-
-#buttonRestart {
-  display: inline-block;
-  margin: 25% 0px 25% 0px;
-  padding: 2%;
-  width: 100%;
+  float: left;
+  margin-right: 29%;
+  display: inline-flex;
 }
 
 #timer > .hours:after,  #timer > .minutes:after{
@@ -109,12 +90,5 @@ body {
 
 #timer{
   background: #1C7CCC;
-  width: 100%;
-}
-
-.timerGame{
-  display: flex;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  justify-content: center;
+  margin-left: 6.5%;
 }
